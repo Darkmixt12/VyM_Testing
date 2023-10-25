@@ -1,0 +1,154 @@
+
+
+/*body{
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364)
+} */
+
+
+/*CSS PARA EL SEGUNDO FORMULARIO*/
+
+#form{
+    width: 500px;
+    margin: 1vh auto 0 auto;
+    padding: 20px;
+    background: #28282B;
+    border-radius: 15px;
+    font-size: 1px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+#form fa-icon{
+    position: relative;
+    color: #fff;
+    font-size: 80px;
+    display: block;
+    text-align:center;
+}
+
+#form span{
+    font-size: 15px;
+    color: #ff3860
+}
+
+.title{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    border-bottom: solid 1px rgb(97, 97, 97);
+}
+
+.row{
+    display: flex;
+    --bs-gutter-x: 0.8rem
+}
+.column{
+    flex: 50%;
+
+}
+
+.column1{
+    flex: 50%;
+    margin: 0 auto;
+    width: 50%;
+}
+h2{   
+
+    color: #0fadd4;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+h3{
+    color: white;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+#BtnForm2{
+    padding: 25px;
+    margin-top: 20px;
+    width: 100%;
+    color: white;
+    background: linear-gradient(45deg, #191970, #a409c3c7,#d40f3a);
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+form #BtnForm2[disabled]{
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+
+/* MENSAJE AL REGISTRAR O NO REGISTRAR */
+
+.message{
+    display: grid;
+    padding: 15px;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    grid-template-columns: 2fr;
+    color: white;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+}
+
+.success {
+    background-color: #09c372;
+    width: 24%;
+    margin: 0vh auto 0 auto;
+    font-size: 20px;
+
+
+}
+
+.failure {
+    background-color: #ff3860;
+    width: 24%;
+    margin: 0vh auto 0 auto;
+    font-size: 20px;
+    color: #FFFFFF;
+
+
+}
+
+::ng-deep .matfocused .mat-form-field-label {
+    color: red !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: red !important;
+   } 
+   
+   ::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: red !important;;
+   }
+   PF-*
+   ::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: red !important;
+   }
+   
+   
+   ::ng-deep .mat-datepicker-toggle {
+    color: #0fadd4 !important;
+   }
+
+   .mat-label{
+    color: blue !important;
+   }
+
+   .titlechequeador,.titlealistador{
+    border-bottom: solid 1px rgb(97, 97, 97);
+    width: 100%;
+   }

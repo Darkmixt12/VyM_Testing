@@ -1,0 +1,22 @@
+<div class="container-delete">
+    <h2 mat-dialog-title> ELIMINAR FACTURA</h2>
+    <form [formGroup]="formDelete" (ngSubmit)="addDeletePersona1()">
+        <mat-dialog-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Digite su Contraseña</mat-label>
+                <input
+                  formControlName="deletePasswordform"
+                  matInput
+                  placeholder=""
+                  type="password"
+                />
+              </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button type="button" (click)="cancelar()" mat-button class="BtnCancelar">Cancelar</button>
+            <!--/* el cdk focus initial hace que el btn se vea pre marcado*/ -->
+            <button type="submit"  (click)="deleteFactura()"dkFocusInitial class="BtnEliminar">Aceptar</button>
+          </mat-dialog-actions>
+
+    </form>
+</div>

@@ -1,0 +1,112 @@
+<div id="container">
+  <div class="containerEdit">
+    <h2 mat-dialog-title>Editar factura # {{id}} </h2>
+     <fa-icon class="special" [icon]="faFilePen"></fa-icon>
+  </div>
+  
+  <form [formGroup]="form" (ngSubmit)="addEditPersona()" id="formEdit">
+    <mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre Cliente</mat-label>
+        <input
+          formControlName="cliente"
+          matInput
+          placeholder="Nuevo nombre de cliente"
+        />
+
+        
+      </mat-form-field>
+      <div class="row">
+      <div class="column">
+        <mat-form-field>
+          <mat-label>Fecha de Registro</mat-label>
+          <input [max]="maxDate" formControlName = 'fechaReg' matInput [matDatepicker]="pickerRegistro">
+          <mat-datepicker-toggle matIconSuffix [for]="pickerRegistro"></mat-datepicker-toggle>
+          <mat-datepicker #pickerRegistro ></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="column3">
+      <mat-form-field appearance="fill">
+        <mat-label>Push Money</mat-label>
+        <input
+          formControlName="pushMoney"
+          matInput
+          placeholder="Nuevo numero de Push Money"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      
+      <mat-form-field>
+        <mat-label>ALISTADOR</mat-label>
+        <mat-select formControlName="nameAlistador">
+          <mat-option *ngFor="let alistador of alistadores" [value]="alistador.value">
+            {{ alistador.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </div>
+
+      
+      <div class="column">
+        <mat-form-field>
+          <mat-label>CHEQUEADOR</mat-label>
+          <mat-select formControlName="nameChequeador">
+            <mat-option *ngFor="let chequeador of chequeadores" [value]="chequeador.value">
+              {{ chequeador.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+
+  <div class="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Hora Chequeo</mat-label>
+      <input
+        formControlName="horaChequeo"
+        matInput
+        placeholder="Nuevo Hora de chequeo"/>
+    </mat-form-field>
+    </div>
+
+    <div class="column">
+      <mat-form-field>
+        <mat-label>N° MESA</mat-label>
+        <mat-select formControlName="numMesa">
+          <mat-option *ngFor="let mesa of mesas" [value]="mesa.value">
+            {{ mesa.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+</div>
+
+<mat-form-field>
+  <mat-label>Fecha de Alistado</mat-label>
+  <input [max]="maxDate" formControlName = 'fechaAlistado' matInput [matDatepicker]="pickerAlistador">
+  <mat-datepicker-toggle matIconSuffix [for]="pickerAlistador"></mat-datepicker-toggle>
+  <mat-datepicker #pickerAlistador></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Fecha de Chequeo</mat-label>
+  <input  [max]="maxDate" matInput formControlName = 'fechaChequeo' [matDatepicker]="pickerChequeador">
+  <mat-datepicker-toggle matIconSuffix [for]="pickerChequeador"></mat-datepicker-toggle>
+  <mat-datepicker #pickerChequeador></mat-datepicker>
+</mat-form-field>
+    
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button type="button" (click)="btncancelar()" id="btnCancelar">Cancelar</button>
+      <!--/* el cdk focus initial hace que el btn se vea pre marcado*/ -->
+      <button type="submit" (click)='updatedFactura(id)' dkFocusInitial id="btnEditar">Aceptar</button>
+    </mat-dialog-actions>
+  </form>
+</div>

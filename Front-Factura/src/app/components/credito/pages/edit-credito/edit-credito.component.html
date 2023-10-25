@@ -1,0 +1,139 @@
+
+<div id="container">
+  <h2 mat-dialog-title>{{ operacion }} Nota de Credito</h2>
+  <div>
+    <div class="container">
+      <div class="message success" *ngIf="status == 'success'">
+        Factura registrada correctamente
+      </div>
+      <div class="message failure" *ngIf="status == 'failed'">
+        Error numero de Boleta ya utilizado
+      </div>
+    </div>  
+<mat-dialog-content class="mat-typography">
+  <div>
+    
+    <form action="" id="form"  [formGroup]="formaddCredito" (ngSubmit)="addEditCredito2(formaddCredito)">
+      <div class="row">
+        <div class="column">
+          <h1>Numero de Boleta</h1>
+          <mat-form-field appearance="fill" MatFormFieldControl>
+            <mat-label> Boleta</mat-label>
+            <input
+              matInput
+              formControlName="numBoleta"
+              autocomplete="off"
+              placeholder="Ingresar Boleta"
+            />
+            <!-- Con el formControlName vinculamos el HTML con el Ts para los input-->
+          </mat-form-field>
+          <!-- SECCION DE ERROR BOLETA # -->
+          <div class="error">
+            <span *ngIf="formaddCredito.get('numBoleta')?.hasError('required') && formaddCredito.get('numBoleta')?.touched">
+              El numero de Boleta es Obligatorio
+            </span>
+            <span *ngIf="formaddCredito.get('numBoleta')?.hasError('minlength') && formaddCredito.get('numBoleta')?.touched" >
+              El minimo de caracteres de la boleta debe ser 4
+            </span>
+            <span *ngIf="formaddCredito.get('numBoleta')?.hasError('maxlength') && formaddCredito.get('numBoleta')?.touched">
+              El maximo de caracteres de la boleda debe ser 5
+            </span>
+            <span *ngIf="formaddCredito.get('numBoleta')?.hasError('pattern') && formaddCredito.get('numBoleta')?.touched">
+              <br>La boleta no puede contener letras ni simbolos
+           </span>
+          </div>
+        </div>
+        <!-- AQUI TERMINA EL DIV DE COLUM COLUM COLUMN-->
+        <!-- Terminar el primer campo # BOLETA -->
+        <div class="column">
+          <h1>Numero de Cliente</h1>
+          <mat-form-field appearance="fill">
+            <mat-label>Cliente</mat-label>
+            <input
+              matInput
+              formControlName="numCliente"
+              utocomplete="off"
+              placeholder=""
+            />
+          </mat-form-field>
+          <!-- Seccion de error del campo # CLIENTE-->
+          <div class="error">
+              <span *ngIf="formaddCredito.get('numCliente')?.hasError('required') && formaddCredito.get('numCliente')?.touched">
+                  El numero de Boleta es Obligatorio
+                </span>
+                <span *ngIf="formaddCredito.get('numCliente')?.hasError('minlength') && formaddCredito.get('numCliente')?.touched" >
+                  El minimo de caracteres de un cliente debe ser 5
+                </span>
+                <span *ngIf="formaddCredito.get('numCliente')?.hasError('maxlength') && formaddCredito.get('numCliente')?.touched" >
+                  El maximo de caracteres de un cliente debe ser 7
+                </span>
+                <span *ngIf="formaddCredito.get('numCliente')?.hasError('pattern') && formaddCredito.get('numCliente')?.touched">
+                   <br>El Cliente no puede contener letras ni simbolos
+                </span>
+          </div>
+          <!-- Termina el segundo campo # CLIENTE -->
+        </div>
+
+        <div class="column1">
+          <h1>Numero de Agente</h1>
+          <mat-form-field appearance="fill">
+            <mat-label>Agente</mat-label>
+            <input
+              matInput
+              formControlName="agente"
+              utocomplete="off"
+              placeholder=""
+            />
+          </mat-form-field>
+          <!-- Seccion de error del campo # CLIENTE-->
+          <!-- Termina el segundo campo # CLIENTE -->
+        </div>
+        <!-- AQUI TERMINA EL DIV DE COLUMN COLUMN COLUMN-->
+      </div>
+      <!-- AQUI TERMINA EL DIV DE ROW ROW ROW ROW ROW ROW-->
+      <div class="row">
+        <div class="column">
+      <h1>Estado del Producto</h1>
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let estado of estados" [value]="estado.value">
+            {{ estado.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="error">
+          <span *ngIf="formaddCredito.get('status')?.hasError('required') && formaddCredito.get('status')?.touched">
+              El estado no puede estar vacio
+            </span>
+      </div>       <!-- Termina el tercer campo de SELECCION ESTADO del producto-->
+      </div>
+      <div class="column">
+      <h1>Numero de Ampo</h1>
+      <mat-form-field>
+          <mat-label>Ampo</mat-label>
+          <mat-select formControlName="location">
+            <mat-option *ngFor="let ampo of ampos" [value]="ampo.value">
+              {{ ampo.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="error">
+        </div>
+      </div>  
+      </div>
+      <h1>Detalles</h1>
+      <mat-form-field class="example-full-width">
+        <mat-label>Nota</mat-label>
+        <textarea matInput formControlName="detalle" placeholder="Deja una Nota Olman"></textarea>
+      </mat-form-field>
+      <!-- Termina el area de comentarios para Olman-->
+
+    <mat-dialog-actions align="center">
+      <button type="button" class="btnCancelar" (click)="btncancelar()">Cancelar</button>
+      <button [disabled]="formaddCredito.invalid" type="submit" id="btnAceptar" class="btnAceptar" (click)="btncancelar" >Aceptar</button>
+    </mat-dialog-actions>
+    </form>
+  </div>
+
+

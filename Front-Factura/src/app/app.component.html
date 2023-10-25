@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VyM Electrica</title>
+  </head>
+  <body>
+    <section class="navbar">
+      
+      <header>
+        
+        <div class="routerlink">
+          <a [routerLink]="['/home']" class="vymlogo"
+            ><img src="../assets/images/VYM (2).png" width="300" height="300"
+          /></a>
+        </div>
+        <div class="wrapper">
+          <div class="icon facebook">
+            <div class="tooltip">Facebook</div>
+            <a
+              href="https://www.facebook.com/vymelectrica/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                ><fa-icon class="special" [icon]="faFacebookF"></fa-icon></span
+            ></a>
+          </div>
+          <!--<div class="icon twitter">
+            <div class="tooltip">Twitter</div>                               
+            <span><fa-icon class="special" [icon]="faTwitter"></fa-icon></span>
+          </div> -->
+          <div class="icon instagram">
+            <div class="tooltip">Instagram</div>
+            <a
+              href="https://www.instagram.com/vymelectricacr/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                ><fa-icon class="special" [icon]="faInstagram"></fa-icon></span
+            ></a>
+          </div>
+          <div class="icon web">
+            <div class="tooltip">Web</div>
+            <a 
+              href="https://www.vymelectrica.com/"
+              target="_blank"
+              rel="noopener noreferrer">
+            <span><fa-icon class="special" [icon]="faGlobe"></fa-icon></span></a>
+          </div>
+          <div class="icon whatsapp">
+            <div class="tooltip">Whatsapp</div>
+            <a
+              href="https://api.whatsapp.com/send?phone=+506%208660%205822&text=Me+gustar%C3%ADa+m%C3%A1s+informaci%C3%B3n"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                ><fa-icon class="special" [icon]="faWhatsapp"></fa-icon></span
+            ></a>
+          </div>
+        </div>
+        <ul>
+          <li><a [routerLink]="['/home']">Ingresar Factura</a></li>
+          <li><a [routerLink]="['/Despacho']">Despacho</a></li>
+          <li><a [routerLink]="['/facturas']">Facturas</a></li>
+          <li><a [routerLink]="['/Despacho-Facturas']">Responsables</a></li>
+          <li><a [routerLink]="['/Notas-Credito']">Notas de Credito</a></li>
+          <li><a [routerLink]="['/Push-Money']">Push Money</a></li>
+          
+          <!--<li><a [routerLink]="['/Borrar-Factura']">Eliminar Facturas</a></li>-->
+        </ul>
+
+      </header>
+    </section>
+    <div class="routerlinked"><router-outlet></router-outlet></div>
+                                                                      <!-- COMIENZA EL FOOTER -->
+    <footer>
+    </footer>
+    
+  </body>
+</html>

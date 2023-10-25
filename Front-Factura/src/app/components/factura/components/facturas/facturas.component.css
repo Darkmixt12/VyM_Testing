@@ -1,0 +1,38 @@
+
+.container {
+    width: 100%;
+    margin: 5vh auto 0 auto;
+    padding: 20px;
+    background: rgb(146, 140, 140);
+    border-radius: 10px;
+    font-size: 17px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+ul{
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+}
+
+.container1{
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .btnEdit, .btnDelete{
+    cursor: pointer;
+  }
+
+  .btnDelete {
+    color: #ff3860
+  }
+
+  .btnEdit{
+    color:#376DCD
+  }

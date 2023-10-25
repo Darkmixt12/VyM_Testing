@@ -1,0 +1,92 @@
+mat-form-field{
+    width:100%;
+}
+
+button{
+    padding: 10px;
+    margin: 0px  5px;
+    border: none;
+    cursor: pointer;
+}
+
+#container{
+    background-color: #28282B;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    width: 100%;
+}
+
+div h2{
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0   auto;
+}
+
+div fa-icon{
+    position: relative;
+    color: white;
+    font-size: 60px;
+    line-height: 70px;
+    display: block;
+    text-align:center;
+    margin-top: 20px;
+    margin-bottom: 20px; /* recien agregado */
+    margin-right: 30px;
+
+}
+
+.containerEdit{
+    display: grid;
+    grid-template-columns: 2fr 1fr ;
+    align-items: center;
+    border-bottom: solid 1px whitesmoke;
+}
+.containerEdit h2{
+ color: whitesmoke;
+ font-size: 25px;
+}
+
+
+
+#btnEditar{
+    background-color: #376DCD;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#btnCancelar{
+    background-color: #fff;
+    color: black;
+    text-transform: uppercase;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+
+.row{
+    display: flex;
+    --bs-gutter-x: 0.8rem
+
+}
+.column{
+    flex: 50%;
+    margin: 0 auto;
+    width: 50%;
+
+
+}
+
+.column3{
+    display: block;
+    width: 35%;
+
+
+}

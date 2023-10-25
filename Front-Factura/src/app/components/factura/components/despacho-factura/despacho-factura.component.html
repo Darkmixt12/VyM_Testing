@@ -1,0 +1,72 @@
+<div>
+    <div class="container">
+      <div class="message success" *ngIf="status == 'success'">
+        Factura registrada correctamente
+      </div>
+      <div class="message failure" *ngIf="status == 'failed'">
+        Error numero de Factura o Pedido ya utilizado
+      </div>
+  </div>
+  <!--MODELO NUMERO DOS DE FORMULARIO CON VALIDATIONS REACTIVE FORM-->
+  
+  <div>
+    <form action="" id="form" (ngSubmit)="agregarFactura2(formAddFactura)" [formGroup]='formAddFactura'> <!-- EL FORM GROUP ES LO QUE ENLAZA el html al TS -->
+      <div class="title">
+        <fa-icon class="special" [icon]="faFileInvoiceDollar"></fa-icon>
+        <h2>INGRESAR NUMERO DE FACTURA</h2>
+      </div>
+      <!--! CAMPO DE NOMBRE DE FACTURA -->
+      <mat-form-field appearance="fill" MatFormFieldControl>
+        <mat-label>NUMERO DE FACTURA</mat-label>
+        <input matInput  formControlName='factura'autocomplete="off" placeholder="Ingresar numero"/> <!-- Con el formControlName vinculamos el HTML con el Ts para los input-->
+      </mat-form-field>
+      <!--? mensaje de error para el form -->
+      <div class="error">
+        <span *ngIf="formAddFactura.get('factura')?.hasError('required') && formAddFactura.get('factura')?.touched"> El numero de factura es <strong>Obligatorio</strong></span>
+        
+        <span *ngIf="formAddFactura.get('factura')?.hasError('minlength') && formAddFactura.get('factura')?.touched"> La factura debe tener como minimo <strong>5 caracteres</strong></span>
+        <span *ngIf="formAddFactura.get('factura')?.hasError('maxlength') && formAddFactura.get('factura')?.touched"> La factura debe tener como maximo <strong>5 caracteres</strong></span>
+        <span *ngIf="formAddFactura.get('factura')?.hasError('pattern')"> El Numero de factura solo puede contener  <strong>NUMEROS</strong></span>
+      </div>
+      <!--! CAMPO PARA NUMERO DE PEDIDO-->
+      <mat-form-field appearance="fill" MatFormFieldControl>
+        <mat-label>NUMERO DE PEDIDO</mat-label>
+        <input matInput  formControlName='pedido'autocomplete="off" placeholder="Ingresar numero"/> <!-- Con el formControlName vinculamos el HTML con el Ts para los input-->
+      </mat-form-field>
+      <!--? Mensaje de error para el form-->
+      <div class="error">
+        <span *ngIf="formAddFactura.get('pedido')?.hasError('required') && formAddFactura.get('pedido')?.touched"> El numero de pedido es <strong>Obligatorio</strong></span>
+        
+        <span *ngIf="formAddFactura.get('pedido')?.hasError('minlength') && formAddFactura.get('pedido')?.touched"> El pedido debe tener como minimo <strong>6 caracteres</strong></span>
+        <span *ngIf="formAddFactura.get('pedido')?.hasError('maxlength') && formAddFactura.get('pedido')?.touched"> El pedido debe tener como maximo <strong>6 caracteres</strong></span>
+        <span *ngIf="formAddFactura.get('pedido')?.hasError('pattern')"> El Numero de pedido solo puede contener  <strong>NUMEROS</strong></span>
+      </div>
+      <div class="row">
+        <!--! NOMBRE DE ALISTADOR SELECTION-->
+        <div class="column">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre de Alistador</mat-label>
+            <input
+              formControlName="nameAlistador"
+              type="text"
+              placeholder=" "
+              aria-label="Number"
+              matInput
+              [matAutocomplete]="auto"
+              [formControl]="nameAlistadorFilter"
+            />
+            <mat-autocomplete autoActiveFistOption #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptionsAlistador | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        </div>
+      <button [disabled]="formAddFactura.invalid" type="submit" mat-button id="BtnForm2" cdkFocusInitial>Guardar</button>
+    </form>
+  </div>
+  

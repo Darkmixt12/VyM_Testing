@@ -1,0 +1,38 @@
+
+.container-delete h2{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin: 0   auto;
+
+}
+.container-delete{
+    background: #28282B;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+mat-form-field{
+    width: 100%;
+}
+
+button{
+
+    padding: 10px; 
+    margin: 5px;
+}
+
+
+.BtnEliminar{
+
+        background-color: #ff3860;
+        border: none;
+        color: white;
+        border-radius: 3px;
+    
+}
+
+.BtnCancelar{
+    color: black;
+    background-color: white;
+}

@@ -1,0 +1,325 @@
+<div>
+  <div class="container">
+    <div class="message success" *ngIf="status == 'success'">
+      Factura registrada correctamente
+    </div>
+    <div class="message failure" *ngIf="status == 'failed'">
+      Error numero de Factura ya utilizado
+    </div>
+  </div>
+  <!--MODELO NUMERO DOS DE FORMULARIO CON VALIDATIONS REACTIVE FORM-->
+
+  <div>
+    <form
+      action=""
+      id="form"
+      (ngSubmit)="agregarFactura2(formAddFactura)"
+      [formGroup]="formAddFactura"
+    >
+      <!-- EL FORM GROUP ES LO QUE ENLAZA el html al TS -->
+      <div class="title">
+        <fa-icon class="special" [icon]="faFileInvoiceDollar"></fa-icon>
+        <h2>FACTURAS VYM</h2>
+      </div>
+      <!-- CAMPO DE NOMBRE DE FACTURA -->
+      <h3>FACTURA</h3>
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="fill" MatFormFieldControl>
+            <mat-label>NUMERO DE FACTURA</mat-label>
+            <input
+              matInput
+              formControlName="factura"
+              autocomplete="off"
+              placeholder="Ingresar numero"
+            />
+            <!-- Con el formControlName vinculamos el HTML con el Ts para los input-->
+          </mat-form-field>
+          <!-- mensaje de error para el form -->
+          <div class="error">
+            <span
+              *ngIf="
+                formAddFactura.get('factura')?.hasError('required') &&
+                formAddFactura.get('factura')?.touched
+              "
+            >
+              El numero de factura es <strong>Obligatorio</strong></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('factura')?.hasError('minlength') &&
+                formAddFactura.get('factura')?.touched
+              "
+            >
+              La factura debe tener como minimo
+              <strong>5 caracteres</strong></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('factura')?.hasError('maxlength') &&
+                formAddFactura.get('factura')?.touched
+              "
+            >
+              La factura debe tener como maximo
+              <strong>5 caracteres</strong></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('factura')?.hasError('pattern') &&
+                formAddFactura.get('factura')?.touched
+              "
+            >
+              El Numero de factura solo puede contener
+              <strong>NUMEROS</strong></span
+            >
+          </div>
+        </div>
+
+        <!--! CAMPO DE NOMBRE DE CLIENTE -->
+        <div class="column">
+          <mat-form-field appearance="fill">
+            <mat-label>NOMBRE DEL CLIENTE</mat-label>
+            <input
+              matInput
+              formControlName="cliente"
+              utocomplete="off"
+              placeholder="ingresar Nombre"
+            />
+          </mat-form-field>
+          <!-- mensaje de error para el form -->
+          <div class="error">
+            <span
+              *ngIf="
+                formAddFactura.get('cliente')?.hasError('required') &&
+                formAddFactura.get('cliente')?.touched
+              "
+            >
+              El nombre del cliente es <strong>Obligatorio</strong></span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- para que se pongan uno debajo del otro y no en linea-->
+
+      <!--! FECHA REGISTRO -->
+      <div class="row">
+        <div class="column1">
+          <mat-form-field>
+            <mat-label>Fecha de Registro</mat-label>
+            <input
+              [max]="maxDate"
+              formControlName="fechaReg"
+              matInput
+              [matDatepicker]="pickerRegistro"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerRegistro"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerRegistro></mat-datepicker>
+          </mat-form-field>
+          <div class="error">
+            <span
+              *ngIf="
+                formAddFactura.get('fechaReg')?.hasError('required') &&
+                formAddFactura.get('fechaReg')?.touched
+              "
+            >
+              La fecha de Registro de la Factura es
+              <strong>Obligatorio</strong></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('fechaReg')?.hasError('minlength') ||
+                (formAddFactura.get('fechaReg')?.hasError('maxlength') &&
+                  formAddFactura.get('factura')?.touched)
+              "
+              >Formato de Fecha <strong>incorrecto</strong></span
+            >
+          </div>
+        </div>
+
+        <!--! CAMPO DE NUM PEDIDO -->
+        <div class="column">
+          <mat-form-field appearance="fill">
+            <mat-label>NUMERO DE PEDIDO</mat-label>
+            <input
+              matInput
+              formControlName="numPedido"
+              autocomplete="off"
+              placeholder="Ingresar Num Pedido"
+            />
+            <!-- Con el formControlName vinculamos el HTML con el Ts para los input-->
+          </mat-form-field>
+          <div class="error">
+            <span
+              *ngIf="
+                formAddFactura.get('numPedido')?.hasError('required') &&
+                formAddFactura.get('numPedido')?.touched
+              "
+              >El numero de pedido es Obligatorio <br></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('numPedido')?.touched &&
+                formAddFactura.get('numPedido')?.hasError('pattern')
+              "
+            >
+              El numero de pedido solo puede tener numeros <br></span
+            >
+            <span
+              *ngIf="
+                formAddFactura.get('numPedido')?.hasError('minlength') &&
+                formAddFactura.get('numPedido')?.touched
+              ">
+              El minimo de caracteres es 5
+            </span>
+            <span
+            *ngIf="
+              formAddFactura.get('numPedido')?.hasError('maxlength') &&
+              formAddFactura.get('numPedido')?.touched
+            ">
+            El limite de caracteres es 5
+          </span>
+            
+          
+          </div>
+          <!-- mensaje de error para el form -->
+        </div>
+
+
+      <!--! CAMPO ALISTADOR-->
+      </div>
+      <div>
+        <h3 class="titlealistador">ALISTADOR</h3>
+        <div class="row">
+          <!-- NOMBRE DE ALISTADOR SELECTION-->
+          <div class="column">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombre de Alistador</mat-label>
+              <input
+                formControlName="nameAlistador"
+                type="text"
+                placeholder=" "
+                aria-label="Number"
+                matInput
+                [matAutocomplete]="auto"
+                [formControl]="nameAlistadorFilter"
+              />
+              <mat-autocomplete autoActiveFistOption #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptionsAlistador | async"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <!-- NUMERO DE MESA DEL ALISTADOR -->
+          <div class="column1">
+            <mat-form-field>
+              <mat-label>N° MESA</mat-label>
+              <mat-select formControlName="numMesa">
+                <mat-option *ngFor="let mesa of mesas" [value]="mesa.value">
+                  {{ mesa.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- FECHA DE CHECKEO DEL ALISTADOR -->
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Fecha de Alistado</mat-label>
+            <input
+              [max]="maxDate"
+              formControlName="fechaAlistado"
+              matInput
+              [matDatepicker]="pickerAlistador"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerAlistador"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerAlistador></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <h3 class="titlechequeador">CHEQUEADOR</h3>
+        <div class="row">
+          <div class="column">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombre de Chequeador</mat-label>
+              <input
+                formControlName="nameChequeador"
+                type="text"
+                placeholder=" "
+                aria-label="Number"
+                matInput
+                [matAutocomplete]="auto1"
+                [formControl]="nameChequeadorFilter"
+              />
+              <mat-autocomplete #auto1="matAutocomplete">
+                <mat-option
+                  *ngFor="let option2 of filteredOptionsChequeador | async"
+                  [value]="option2"
+                >
+                  {{ option2 }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="column1">
+            <mat-form-field appearance="fill">
+              <mat-label>HORA CHEQUEO</mat-label>
+              <input
+                matInput
+                formControlName="horaChequeo"
+                autocomplete="off"
+                placeholder="00:00 am/pm"
+              />
+            </mat-form-field>
+            <div class="error">
+              <span
+                *ngIf="
+                  formAddFactura.get('horaChequeo')?.hasError('pattern') &&
+                  formAddFactura.get('horaChequeo')?.touched
+                "
+              >
+                Formato de Hora <strong>Incorrecto</strong></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <mat-form-field>
+            <mat-label>Fecha de Chequeo</mat-label>
+            <input
+              [max]="maxDate"
+              matInput
+              formControlName="fechaChequeo"
+              [matDatepicker]="pickerChequeador"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerChequeador"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerChequeador></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button
+        [disabled]="formAddFactura.invalid"
+        type="submit"
+        mat-button
+        id="BtnForm2"
+        cdkFocusInitial
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+</div>

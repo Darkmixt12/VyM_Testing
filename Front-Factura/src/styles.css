@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800&display=swap');
+
+/* pone por defecto que ninguno objeto en el cuerpo tenga padding o margin*/
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+/* mueve los iconos de facebok insta e internet mas cerca de los links */
+.routerlink{
+    width: 20%; /* acomoda los iconos de los links en la barra superior */
+}
+.navbar{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /*min-height: 100vh; 100 vh es equivalente a ocupar 100% de la altura visible de la pantalla */
+    padding: 90px;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    background: #ffffff;
+}
+
+header{
+    position: absolute;
+    top: 10;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.vymlogo{
+    position:relative;
+    max-width: 80px;
+    align-items: center;
+    align-items: space-between;
+}
+
+header ul{
+    position: relative;
+    display:flex;
+    
+}
+
+/* inicio producto contacto */
+header ul li{
+    list-style: none;
+    align-items: center;
+    
+}
+
+header ul li a{
+    display: inline-block;
+    color: #333;
+    font-weight: 400;
+    padding: 20px;
+    text-decoration: none;
+    align-items: center;
+    align-items: space-between;
+    
+}
+
+/* SOCIAL MEDIA ICONS NAV BAR*/
+
+.wrapper{
+    display:  inline-flex;
+    align-items: center;
+}
+.wrapper .icon{
+  margin: 0 20px;
+  display: flex; 
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+  
+}
+.wrapper .icon span{
+    position: relative;
+    height: 55px;
+    width: 55px;
+    display: block;
+    background: #d3cece;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+
+}
+
+.wrapper .icon span fa-icon{
+    font-size: 25px;
+    line-height: 60px; /* para centrar el icono al centro */
+
+}
+/* para que el icono cambie a color blanco al ponerle el mouse */
+.wrapper .icon:hover span fa-icon{
+    color: #fff;
+    font-size: 25px;
+    line-height: 60px;
+}
+/* estilos de la barra con el nombre que salta */
+.wrapper .icon .tooltip{
+    position:absolute;
+    top: 0px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 25px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+.wrapper .icon:hover .tooltip{
+    top: -55px;
+    opacity: 1;
+    pointer-events: auto;
+
+}
+
+/* Diseñor de la flecha que apunta hacia el icono */
+.wrapper .icon .tooltip:before{
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #333;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+    
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip{
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
+}
+/* COLOR DE EL ICONO FACEBOOK */
+.wrapper .facebook:hover span,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip:before{
+    background: #305999;
+
+}
+/* COLOR DE EL ICONO DE INSTAGRAM */
+.wrapper .instagram:hover span,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip:before{
+    background: #e1306c;
+
+}
+/* COLOR DLE ICONO DE TWITTER*/
+.wrapper .twitter:hover span,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip:before{
+    background: #46C1F6;
+
+}
+/* COLOR DEL ICONO DE WEB */
+.wrapper .web:hover span,
+.wrapper .web:hover .tooltip,
+.wrapper .web:hover .tooltip:before{
+    background: #f69b46;
+
+}
+
+.wrapper .whatsapp:hover span,
+.wrapper .whatsapp:hover .tooltip,
+.wrapper .whatsapp:hover .tooltip:before{
+    background: #25D366;
+
+}
+.wrapper a{
+    text-decoration: none;
+    color: black;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
