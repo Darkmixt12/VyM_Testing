@@ -35,34 +35,16 @@ export class PushTableComponent implements AfterViewInit, OnInit {
 
 
   ngOnInit(): void {
-    this.getFacturas()
+    this._pagesService.getFacturas().subscribe((r)=>{
+      this.dataSource.data = r})
   }
+  
   
   ngAfterViewInit() {
      this.dataSource.paginator = this.paginator;
      this.dataSource.sort = this.sort;
-     this._pagesService.testPagesService()
   }
 
-
-  //? Jala la info de las facturas de la BQ y las muestra en la tabla // 
-  getFacturas() {
-    this.loading = true;
-    setTimeout(() => {
-      this._facturaService.listaFacturas().subscribe(
-        (response) => {
-          this.loading = false;
-          if (response.facturasInfo) {
-            this.dataSource.data =
-              response.facturasInfo; /* para que se llenen los campos */
-          }
-        },
-        (error) => {
-          console.log(<any>error);
-        }
-      );
-    }, 700);
-  }
 
   //? Aplica el filtro a la tabla pero es global busca por todos los campos sus relaciones 
   applyFilter(event: Event) {
